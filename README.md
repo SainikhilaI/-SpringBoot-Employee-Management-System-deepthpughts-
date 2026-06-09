@@ -40,9 +40,11 @@ spring.datasource.url=jdbc:postgresql://[aws-1-ap-south-1.pooler.supabase.com:65
 spring.datasource.username=postgres.xvwvjzfvwuxrkdkdjjds
 spring.datasource.password=P0stgr3@sql
 ```
-### Documentation and AI Tool Usage
-* During this development sprint, Gemini was utilized as an AI pair-programming assistant to accelerate systemic auditing and debugging:Stack Trace Resolution: Assisted in analyzing and resolving complex runtime Hibernate exceptions, including handling direct vs. pooled Postgres authentication credential parsing `(PSQLException: FATAL: password authentication failed)`and mapping module environment-specific variables.
-* Architectural Isolation: Provided code structure guidance on setting up decoupled application event models to cleanly isolate external I/O tasks from transactional business boundaries.
+
+## 4. Documentation and AI Tool Usage
+During this development sprint, **Gemini** was utilized as an AI pair-programming assistant to accelerate systemic auditing and debugging:
+* **Stack Trace Resolution:** Assisted in analyzing and resolving complex runtime Hibernate exceptions, including handling direct vs. pooled Postgres authentication credential parsing (`PSQLException: FATAL: password authentication failed`) and mapping module environment-specific variables.
+* **Architectural Isolation:** Provided code structure guidance on setting up decoupled application event models to cleanly isolate external I/O tasks from transactional business boundaries.
 
 ### REST API Endpoints & `curl` Examples
 * ** Worker clock in
