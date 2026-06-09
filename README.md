@@ -41,10 +41,11 @@ spring.datasource.username=postgres.xvwvjzfvwuxrkdkdjjds
 spring.datasource.password=P0stgr3@sql
 ```
 
-## 4. Documentation and AI Tool Usage
-During this development sprint, **Gemini** was utilized as an AI pair-programming assistant to accelerate systemic auditing and debugging:
-* **Stack Trace Resolution:** Assisted in analyzing and resolving complex runtime Hibernate exceptions, including handling direct vs. pooled Postgres authentication credential parsing (`PSQLException: FATAL: password authentication failed`) and mapping module environment-specific variables.
-* **Architectural Isolation:** Provided code structure guidance on setting up decoupled application event models to cleanly isolate external I/O tasks from transactional business boundaries.
+## 4. Documentation of AI Engineering & Hallucination Guardrails
+In alignment with development guidelines, **Gemini** was utilized as an engineering partner to accelerate debugging and architectural isolation. Explicit engineering constraints were applied to prevent AI hallucination and maintain data integrity:
+
+- **Enforcing Strict Transaction Isolation:** When the AI initially suggested a unified execution block for monthly settlements, I overrode the pattern to implement a decoupled event architecture. This guarded against a critical hallucination risk where side effects (SMS alerts) would fire prematurely before a database commit was finalized.
+- **Negative Prompting & Local Validation:** Applied negative constraints during development (e.g., *"Do not use hardcoded environment origins for CORS; do not block Spring Boot startup on Redis unavailability"*). Every technical recommendation was cross-verified locally against the Spring Boot runtime logs and cloud Supabase transaction states before integration.
 
 ### REST API Endpoints & `curl` Examples
 * ** Worker clock in
